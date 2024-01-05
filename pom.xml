@@ -16,6 +16,7 @@
         <junit.jupiter.version>5.10.1</junit.jupiter.version>
 
         <webdriver.base.url>https://qa-scooter.praktikum-services.ru</webdriver.base.url>
+        <webdriver.waiters.timeout>5</webdriver.waiters.timeout>
         <browser>firefox</browser>
     </properties>
 
@@ -64,6 +65,7 @@
                     </properties>
                     <systemPropertyVariables>
                         <webdriver.base.url>${webdriver.base.url}</webdriver.base.url>
+                        <webdriver.waiters.timeout>${webdriver.waiters.timeout}</webdriver.waiters.timeout>
                         <browser>${browser}</browser>
                     </systemPropertyVariables>
                 </configuration>

@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import waiters.BaseWaiters;
+import wrappers.ExtendedFieldDecorator;
 
 public abstract class CommonActions {
     protected WebDriver driver;
@@ -14,6 +15,6 @@ public abstract class CommonActions {
         this.driver = driver;
         waiters = new BaseWaiters(driver);
         actions = new Actions(driver);
-        PageFactory.initElements(driver, this);
+        PageFactory.initElements(new ExtendedFieldDecorator(driver), this);
     }
 }

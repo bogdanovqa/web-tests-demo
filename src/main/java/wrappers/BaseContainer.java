@@ -9,7 +9,7 @@ public abstract class BaseContainer {
         this.wrappedElement = wrappedElement;
     }
 
-    protected boolean isDisplayed() {
+    public boolean isDisplayed() {
         return wrappedElement.isDisplayed();
     }
 }

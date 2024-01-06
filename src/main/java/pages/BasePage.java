@@ -27,4 +27,6 @@ public abstract class BasePage<T> extends CommonActions {
         }
         throw new PathEmptyException();
     }
+
+    public abstract T shouldDisplayed();
 }

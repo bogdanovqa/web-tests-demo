@@ -2,6 +2,8 @@ package extensions;
 
 import annotations.Driver;
 import drivers.DriverFactory;
+import exceptions.WebDriverSetUpException;
+import lombok.SneakyThrows;
 import org.junit.jupiter.api.extension.AfterEachCallback;
 import org.junit.jupiter.api.extension.BeforeEachCallback;
 import org.junit.jupiter.api.extension.ExtensionContext;
@@ -38,6 +40,7 @@ public class UIExtensions implements BeforeEachCallback, AfterEachCallback {
         }
     }
 
+    @SneakyThrows
     @Override
     public void beforeEach(ExtensionContext extensionContext) {
         driver = new EventFiringWebDriver(new DriverFactory().getInstance());
@@ -50,7 +53,7 @@ public class UIExtensions implements BeforeEachCallback, AfterEachCallback {
                         field.setAccessible(true);
                         field.set(extensionContext.getTestInstance().get(), driver);
                     } catch (IllegalAccessException e) {
-                        throw new Error(String.format("Could not access or set webdriver in field: %s - is this field public?", field), e);
+                        throw new WebDriverSetUpException(field);
                     }
                     return null;
                 });
